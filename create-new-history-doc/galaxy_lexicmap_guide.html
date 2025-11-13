@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy History Import and LexicMap Tool Usage Guide</title>
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #5c9bd1;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --code-bg: #f5f5f5;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toc {
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            border-bottom: none;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .toc li {
+            margin: 8px 0;
+        }
+
+        .quick-start {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success-color);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .info {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        ol, ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .command-box {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .command-box code {
+            color: #d4d4d4;
+            background-color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.85em;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: var(--warning-color);
+            color: #333;
+        }
+
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+            color: #666;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Galaxy History Import and LexicMap Tool Usage Guide</h1>
+            <p>Complete guide for working with Galaxy histories and performing sequence alignments with LexicMap</p>
+        </header>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#quick-start">1. Quick Start Guide</a></li>
+                <li><a href="#web-interface">2. Detailed Instructions - Web Interface</a></li>
+                <li><a href="#bioblend">3. Programmatic Access with BioBlend</a></li>
+                <li><a href="#understanding">4. Understanding LexicMap</a></li>
+                <li><a href="#advanced">5. Advanced Usage</a></li>
+                <li><a href="#troubleshooting">6. Troubleshooting</a></li>
+                <li><a href="#resources">7. Additional Resources</a></li>
+                <li><a href="#quick-ref">8. Quick Reference</a></li>
+            </ul>
+        </div>
+
+        <section id="quick-start" class="quick-start">
+            <h2>Quick Start Guide</h2>
+
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>A Galaxy account at <a href="https://test.galaxyproject.org/" target="_blank">https://test.galaxyproject.org/</a></li>
+                <li>Internet browser (Chrome, Firefox, Safari, or Edge)</li>
+            </ul>
+
+            <h3>5-Minute Workflow</h3>
+            <ol>
+                <li><strong>Create an account</strong> at <a href="https://test.galaxyproject.org/" target="_blank">https://test.galaxyproject.org/</a></li>
+                <li><strong>Import the test history</strong>: <a href="https://test.galaxyproject.org/u/anton/h/test-history" target="_blank">https://test.galaxyproject.org/u/anton/h/test-history</a></li>
+                <li><strong>Open LexicMap Search tool</strong>: <a href="https://test.galaxyproject.org/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Flexicmap%2Flexicmap_search%2F0.8.0%2Bgalaxy0&version=latest" target="_blank">Click here</a></li>
+                <li><strong>Select "locally installed indices"</strong> and check as many indices as possible</li>
+                <li><strong>Use datasets #1 and #2</strong> as test data or upload your own data</li>
+                <li><strong>Execute</strong> and wait for results</li>
+            </ol>
+        </section>
+
+        <section id="web-interface">
+            <h2>Detailed Instructions - Web Interface</h2>
+
+            <h3>Step 1: Create a Galaxy Account</h3>
+            <ol>
+                <li>Navigate to <a href="https://test.galaxyproject.org/" target="_blank">https://test.galaxyproject.org/</a></li>
+                <li>Click <strong>"Login or Register"</strong> in the top menu</li>
+                <li>Select <strong>"Register"</strong></li>
+                <li>Fill in:
+                    <ul>
+                        <li>Email address</li>
+                        <li>Password</li>
+                        <li>Public name (username)</li>
+                    </ul>
+                </li>
+                <li>Click <strong>"Create"</strong></li>
+                <li>Check your email for verification (if required)</li>
+            </ol>
+
+            <h3>Step 2: Import a Shared History</h3>
+
+            <h4>Method A: Import from Shared Link <span class="badge badge-success">Recommended</span></h4>
+            <ol>
+                <li>Click on the test history link: <a href="https://test.galaxyproject.org/u/anton/h/test-history" target="_blank">https://test.galaxyproject.org/u/anton/h/test-history</a></li>
+                <li>This opens the shared history view</li>
+                <li>Click the <strong>"+"</strong> (plus) icon or <strong>"Import history"</strong> button in the top right</li>
+                <li>The history will be copied to your account</li>
+                <li>Click <strong>"View history"</strong> to see the imported datasets</li>
+            </ol>
+
+            <h4>Method B: Import History from URL</h4>
+            <ol>
+                <li>In the Galaxy interface, click <strong>"User"</strong> → <strong>"Histories"</strong> in the top menu</li>
+                <li>Click <strong>"Import from File"</strong> button</li>
+                <li>Paste the URL of a history archive (.tar.gz file)</li>
+                <li>Click <strong>"Submit"</strong></li>
+                <li>Wait for the import to complete (you'll see a progress bar)</li>
+            </ol>
+
+            <h4>Method C: Create New History and Upload Data</h4>
+            <ol>
+                <li>Click the <strong>"+"</strong> icon at the top of the History panel (right side)</li>
+                <li>Select <strong>"Create new history"</strong></li>
+                <li>Name your history (e.g., "My LexicMap Analysis")</li>
+                <li>Click <strong>"Upload Data"</strong> button in the tools panel</li>
+                <li>Choose files from:
+                    <ul>
+                        <li><strong>Your computer</strong> (drag and drop or browse)</li>
+                        <li><strong>URL</strong> (paste a direct link to a FASTA file)</li>
+                        <li><strong>FTP</strong> (if you've uploaded large files via FTP)</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="info">
+                <strong>Supported file formats for LexicMap:</strong>
+                <ul>
+                    <li>FASTA (.fasta, .fa, .fna)</li>
+                    <li>Compressed FASTA (.fasta.gz, .fa.gz)</li>
+                    <li>Minimum sequence length: >150 bp recommended</li>
+                </ul>
+            </div>
+
+            <h3>Step 3: Navigate to LexicMap Search Tool</h3>
+
+            <h4>Direct Link</h4>
+            <p>Click this link: <a href="https://test.galaxyproject.org/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Flexicmap%2Flexicmap_search%2F0.8.0%2Bgalaxy0&version=latest" target="_blank">LexicMap Search Tool</a></p>
+
+            <h4>Via Tool Panel</h4>
+            <ol>
+                <li>In the left <strong>Tools</strong> panel, use the search box</li>
+                <li>Type <strong>"lexicmap"</strong> or <strong>"sequence alignment"</strong></li>
+                <li>Click on <strong>"LexicMap Search"</strong> when it appears</li>
+                <li>The tool form will load in the center panel</li>
+            </ol>
+
+            <h3>Step 4: Configure LexicMap Search Parameters</h3>
+
+            <h4>Basic Configuration</h4>
+            <ol>
+                <li><strong>Input sequences</strong> (Query sequences):
+                    <ul>
+                        <li>Select your FASTA file from the dropdown</li>
+                        <li>This should be dataset #1, #2, or your uploaded file</li>
+                        <li>These are the sequences you want to search</li>
+                    </ul>
+                </li>
+                <li><strong>Reference genome database</strong>:
+                    <ul>
+                        <li>Select <strong>"locally installed indices"</strong></li>
+                        <li>Check as many indices as possible for comprehensive search</li>
+                        <li>Available indices may include:
+                            <ul>
+                                <li>GTDB (Genome Taxonomy Database)</li>
+                                <li>RefSeq prokaryotes</li>
+                                <li>GenBank prokaryotes</li>
+                                <li>Custom genome collections</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Output format</strong>:
+                    <ul>
+                        <li>Default: Tabular (TSV) format</li>
+                        <li>Includes all alignment statistics</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Advanced Parameters (Optional)</h4>
+            <p><strong>Alignment Quality Thresholds:</strong></p>
+            <ul>
+                <li><strong>Minimum percent identity</strong> (default: 80%)
+                    <ul>
+                        <li>Lower for divergent sequences (e.g., 70%)</li>
+                        <li>Higher for strict matches (e.g., 90%)</li>
+                    </ul>
+                </li>
+                <li><strong>Minimum query coverage per genome</strong> (default: 70%)
+                    <ul>
+                        <li>Percentage of query that must align</li>
+                        <li>Lower for partial matches (e.g., 50%)</li>
+                    </ul>
+                </li>
+                <li><strong>Minimum query coverage per HSP</strong> (default: 70%)
+                    <ul>
+                        <li>Coverage per high-scoring pair</li>
+                        <li>Set to 0 for plasmid searches</li>
+                    </ul>
+                </li>
+                <li><strong>Maximum number of target genomes</strong> (default: 10000)
+                    <ul>
+                        <li>Limit results to top N genomes</li>
+                        <li>Reduce for faster processing</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Step 5: Execute the Analysis</h3>
+            <ol>
+                <li>Review your parameter selections</li>
+                <li>Click the blue <strong>"Execute"</strong> button at the bottom of the form</li>
+                <li>The tool will appear in your history (right panel) with:
+                    <ul>
+                        <li><span style="color: gray;">Gray/waiting</span>: Job queued</li>
+                        <li><span style="color: orange;">Yellow/running</span>: Job executing</li>
+                        <li><span style="color: green;">Green/done</span>: Job completed successfully</li>
+                        <li><span style="color: red;">Red/error</span>: Job failed (check error message)</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="info">
+                <strong>Estimated run times:</strong>
+                <ul>
+                    <li>Single gene vs 1M genomes: ~30 seconds - 5 minutes</li>
+                    <li>Multiple genes: 5-15 minutes</li>
+                    <li>Large plasmids: 10-30 minutes</li>
+                </ul>
+            </div>
+
+            <h3>Step 6: View and Interpret Results</h3>
+
+            <h4>View Results</h4>
+            <ol>
+                <li>Once the job turns green, click the <strong>eye icon</strong> to view</li>
+                <li>Results display in the center panel as a table</li>
+                <li>Click the <strong>download icon</strong> to save locally</li>
+                <li>Click the <strong>info icon</strong> for job details</li>
+            </ol>
+
+            <h4>Understanding the Output Columns</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Meaning</th>
+                        <th>What to Look For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>query</strong></td>
+                        <td>Your query sequence ID</td>
+                        <td>Identifies which input sequence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>qlen</strong></td>
+                        <td>Query length (bp)</td>
+                        <td>Reference for coverage calculations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>hits</strong></td>
+                        <td>Number of hits found</td>
+                        <td>More hits = more widespread</td>
+                    </tr>
+                    <tr>
+                        <td><strong>sgenome</strong></td>
+                        <td>Subject genome ID</td>
+                        <td>The genome with a match</td>
+                    </tr>
+                    <tr>
+                        <td><strong>sseqid</strong></td>
+                        <td>Subject sequence ID</td>
+                        <td>Specific contig/chromosome</td>
+                    </tr>
+                    <tr>
+                        <td><strong>qcovGnm</strong></td>
+                        <td>Query coverage (genome-wide)</td>
+                        <td>>70% = good match</td>
+                    </tr>
+                    <tr>
+                        <td><strong>pident</strong></td>
+                        <td>Percent identity</td>
+                        <td>>80% = strong similarity</td>
+                    </tr>
+                    <tr>
+                        <td><strong>qstart, qend</strong></td>
+                        <td>Query alignment region</td>
+                        <td>Which part of query aligned</td>
+                    </tr>
+                    <tr>
+                        <td><strong>sstart, send</strong></td>
+                        <td>Subject alignment region</td>
+                        <td>Location in reference genome</td>
+                    </tr>
+                    <tr>
+                        <td><strong>evalue</strong></td>
+                        <td>Statistical significance</td>
+                        <td>Lower = more significant</td>
+                    </tr>
+                    <tr>
+                        <td><strong>bitscore</strong></td>
+                        <td>Alignment quality score</td>
+                        <td>Higher = better alignment</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Interpreting Results</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quality Level</th>
+                        <th>pident</th>
+                        <th>qcovGnm</th>
+                        <th>evalue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #d4edda;">
+                        <td><strong>High-quality matches</strong></td>
+                        <td>>90%</td>
+                        <td>>80%</td>
+                        <td>&lt;1e-50</td>
+                    </tr>
+                    <tr style="background-color: #fff3cd;">
+                        <td><strong>Moderate matches</strong></td>
+                        <td>70-90%</td>
+                        <td>50-80%</td>
+                        <td>&lt;1e-10</td>
+                    </tr>
+                    <tr style="background-color: #f8d7da;">
+                        <td><strong>Low-quality/distant matches</strong></td>
+                        <td>&lt;70%</td>
+                        <td>&lt;50%</td>
+                        <td>Consider biological significance</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Step 7: Download or Share Results</h3>
+
+            <h4>Download Results</h4>
+            <ol>
+                <li>Click the <strong>disk icon</strong> (download) next to the result dataset</li>
+                <li>Choose format (usually TSV/tabular)</li>
+                <li>Save to your computer</li>
+            </ol>
+
+            <h4>Share Your History</h4>
+            <ol>
+                <li>Click <strong>"History options"</strong> (gear icon) in history panel</li>
+                <li>Select <strong>"Share or Publish"</strong></li>
+                <li>Choose:
+                    <ul>
+                        <li><strong>"Make accessible via link"</strong>: Anyone with URL can view</li>
+                        <li><strong>"Publish"</strong>: Publicly listed</li>
+                        <li><strong>"Share with user"</strong>: Share with specific Galaxy users</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Export History</h4>
+            <ol>
+                <li>Click <strong>"History options"</strong> → <strong>"Export History to File"</strong></li>
+                <li>Wait for export to complete</li>
+                <li>Download the .tar.gz archive</li>
+                <li>Import later or share the file</li>
+            </ol>
+        </section>
+
+        <section id="bioblend">
+            <h2>Programmatic Access with BioBlend</h2>
+            <p>For automation, scripting, and batch processing, use BioBlend (Python library).</p>
+
+            <h3>Installation</h3>
+            <div class="command-box">
+                <code>pip install bioblend</code>
+            </div>
+
+            <h3>Basic Setup</h3>
+            <pre><code>from bioblend.galaxy import GalaxyInstance
+
+# Connect to Galaxy
+gi = GalaxyInstance(
+    url='https://test.galaxyproject.org',
+    key='YOUR_API_KEY'  # Get from User > Preferences > Manage API Key
+)
+
+# Test connection
+print(gi.config.get_config())</code></pre>
+
+            <h3>Get Your API Key</h3>
+            <ol>
+                <li>Log into <a href="https://test.galaxyproject.org" target="_blank">https://test.galaxyproject.org</a></li>
+                <li>Click <strong>"User"</strong> → <strong>"Preferences"</strong></li>
+                <li>Click <strong>"Manage API Key"</strong></li>
+                <li>Click <strong>"Create a new key"</strong> (if no key exists)</li>
+                <li>Copy the key and keep it secure</li>
+            </ol>
+
+            <h3>Import History via API</h3>
+            <pre><code># Import history from an exported archive URL
+import_result = gi.histories.import_history(
+    url='https://example.com/path/to/history.tar.gz'
+)
+
+print(f"Importing history: {import_result}")
+# Returns job information - check status periodically</code></pre>
+
+            <h3>Create and Manage Histories</h3>
+            <pre><code># Create new history
+new_history = gi.histories.create_history(
+    name='API LexicMap Analysis'
+)
+history_id = new_history['id']
+print(f"Created history: {history_id}")
+
+# List all your histories
+histories = gi.histories.get_histories()
+for h in histories:
+    print(f"History: {h['name']} (ID: {h['id']})")</code></pre>
+
+            <h3>Upload Data to History</h3>
+            <pre><code># Upload local file
+upload_result = gi.tools.upload_file(
+    path='my_sequences.fasta',
+    history_id=history_id,
+    file_type='fasta'
+)
+dataset_id = upload_result['outputs'][0]['id']
+print(f"Uploaded dataset ID: {dataset_id}")</code></pre>
+
+            <h3>Run LexicMap via API</h3>
+            <pre><code># Get tool ID
+tool_id = 'toolshed.g2.bx.psu.edu/repos/iuc/lexicmap/lexicmap_search/0.8.0+galaxy0'
+
+# Run LexicMap search
+inputs = {
+    'query': {'src': 'hda', 'id': dataset_id},  # Input dataset
+    'reference': 'locally_cached',  # Use local indices
+    'align_min_match_pident': 80,
+    'min_qcov_per_genome': 70,
+    'top_n_genomes': 10000
+}
+
+job_result = gi.tools.run_tool(
+    history_id=history_id,
+    tool_id=tool_id,
+    tool_inputs=inputs
+)
+
+print(f"Job submitted: {job_result}")
+output_dataset_id = job_result['outputs'][0]['id']</code></pre>
+
+            <h3>Download Results</h3>
+            <pre><code># Download dataset
+gi.datasets.download_dataset(
+    dataset_id=output_dataset_id,
+    file_path='./lexicmap_results.tsv',
+    use_default_filename=False
+)
+
+print("Results downloaded!")
+
+# Read and process results
+import pandas as pd
+df = pd.read_csv('lexicmap_results.tsv', sep='\t')
+print(f"Found {len(df)} alignments")
+print(df.head())</code></pre>
+        </section>
+
+        <section id="understanding">
+            <h2>Understanding LexicMap</h2>
+
+            <h3>What is LexicMap?</h3>
+            <p>LexicMap is a specialized sequence alignment tool designed for:</p>
+            <ul>
+                <li><strong>Querying genes, plasmids, or viral sequences</strong> against massive genome databases</li>
+                <li><strong>Fast searches</strong> across millions of prokaryotic genomes</li>
+                <li><strong>Memory-efficient</strong> indexing and searching</li>
+                <li><strong>Comprehensive results</strong> including all hits with high sensitivity</li>
+            </ul>
+
+            <h3>When to Use LexicMap</h3>
+            <div class="info">
+                <strong>Ideal use cases:</strong>
+                <ul>
+                    <li>Identifying which organisms carry a specific gene</li>
+                    <li>Finding plasmid distribution across species</li>
+                    <li>Tracing horizontal gene transfer</li>
+                    <li>Screening for antimicrobial resistance genes</li>
+                    <li>Identifying prophages in bacterial genomes</li>
+                    <li>Environmental metagenomics source tracking</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>Not suitable for:</strong>
+                <ul>
+                    <li>Protein sequence searches (use BLAST or Diamond)</li>
+                    <li>Very short sequences &lt;100 bp (use exact matching)</li>
+                    <li>Eukaryotic genome searches (optimized for prokaryotes)</li>
+                </ul>
+            </div>
+
+            <h3>LexicMap vs Other Tools</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>LexicMap</th>
+                        <th>BLAST</th>
+                        <th>DIAMOND</th>
+                        <th>Bowtie2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Input type</strong></td>
+                        <td>Nucleotide</td>
+                        <td>Both</td>
+                        <td>Protein focus</td>
+                        <td>Nucleotide</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Database size</strong></td>
+                        <td>Millions of genomes</td>
+                        <td>Limited</td>
+                        <td>Large</td>
+                        <td>Single ref</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speed</strong></td>
+                        <td>Very fast</td>
+                        <td>Slow</td>
+                        <td>Fast (protein)</td>
+                        <td>Very fast</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sensitivity</strong></td>
+                        <td>High</td>
+                        <td>High</td>
+                        <td>High</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Use case</strong></td>
+                        <td>Prokaryote screening</td>
+                        <td>General</td>
+                        <td>Protein search</td>
+                        <td>Mapping</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Performance Expectations</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Query Type</th>
+                        <th>Database Size</th>
+                        <th>Typical Run Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Single gene (500 bp)</td>
+                        <td>1M genomes</td>
+                        <td>30 seconds - 2 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Plasmid (5 kb)</td>
+                        <td>1M genomes</td>
+                        <td>5-15 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Multiple queries</td>
+                        <td>1M genomes</td>
+                        <td>~1-2 min per query</td>
+                    </tr>
+                    <tr>
+                        <td>16S rRNA gene</td>
+                        <td>2.34M genomes</td>
+                        <td>~15 minutes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Understanding Match Quality</h3>
+
+            <h4>Query Coverage (qcovGnm)</h4>
+            <ul>
+                <li><strong>100%</strong> = complete match</li>
+                <li><strong>50-80%</strong> = partial match (may be fragmented assembly)</li>
+                <li><strong>&lt;50%</strong> = incomplete/divergent match</li>
+            </ul>
+
+            <h4>Percent Identity (pident)</h4>
+            <ul>
+                <li><strong>&gt;95%</strong> = very similar (same species/strain)</li>
+                <li><strong>85-95%</strong> = related (same genus)</li>
+                <li><strong>70-85%</strong> = distant homologs</li>
+                <li><strong>&lt;70%</strong> = weak similarity</li>
+            </ul>
+
+            <h4>E-value</h4>
+            <ul>
+                <li><strong>&lt;1e-50</strong> = highly significant</li>
+                <li><strong>1e-10 to 1e-50</strong> = significant</li>
+                <li><strong>&gt;1e-5</strong> = may be random</li>
+            </ul>
+
+            <div class="info">
+                <strong>Practical example - Searching for a resistance gene:</strong>
+                <ul>
+                    <li><span class="badge badge-success">High confidence</span>: qcovGnm &gt;80% + pident &gt;90%</li>
+                    <li><span class="badge badge-warning">Probable hit</span>: qcovGnm 50-80% + pident &gt;85% (investigate)</li>
+                    <li><span class="badge badge-info">Uncertain</span>: qcovGnm &lt;50% or pident &lt;80% (needs validation)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="advanced">
+            <h2>Advanced Usage</h2>
+
+            <h3>Batch Processing Multiple Queries</h3>
+            <p><strong>Via Web Interface:</strong> Upload a multi-FASTA file with all query sequences and run LexicMap once - it processes all sequences.</p>
+
+            <p><strong>Via BioBlend:</strong></p>
+            <pre><code>import glob
+
+query_files = glob.glob('queries/*.fasta')
+
+for query_file in query_files:
+    # Upload
+    upload = gi.tools.upload_file(query_file, hist_id, file_type='fasta')
+    dataset_id = upload['outputs'][0]['id']
+
+    # Run LexicMap
+    job = gi.tools.run_tool(hist_id, tool_id, {
+        'query': {'src': 'hda', 'id': dataset_id},
+        'reference': 'locally_cached',
+        'align_min_match_pident': 80
+    })
+
+    print(f"Submitted: {query_file}")</code></pre>
+
+            <h3>Filtering and Post-Processing Results</h3>
+            <pre><code>import pandas as pd
+
+# Load results
+df = pd.read_csv('lexicmap_results.tsv', sep='\t')
+
+# Filter high-quality hits
+high_quality = df[
+    (df['pident'] > 90) &
+    (df['qcovGnm'] > 80) &
+    (df['evalue'] < 1e-50)
+]
+
+# Count genomes per query
+genome_counts = df.groupby('query')['sgenome'].nunique()
+print("Genomes per query:")
+print(genome_counts)
+
+# Find queries in many genomes (widespread)
+widespread = genome_counts[genome_counts > 100]
+print(f"Widespread genes: {list(widespread.index)}")
+
+# Export filtered results
+high_quality.to_csv('filtered_hits.tsv', sep='\t', index=False)</code></pre>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+
+            <h3>History Import Issues</h3>
+
+            <div class="warning">
+                <strong>Problem:</strong> "Unable to import history from URL"<br>
+                <strong>Solutions:</strong>
+                <ul>
+                    <li>Check: URL is publicly accessible (test in browser)</li>
+                    <li>Check: File is .tar.gz format (not .zip or .tar)</li>
+                    <li>Solution: Download file, then use "Import from file" with local file</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>Problem:</strong> "Import is stuck in pending"<br>
+                <strong>Solutions:</strong>
+                <ul>
+                    <li>Wait: Large histories take time (&gt;1GB can take 10-30 minutes)</li>
+                    <li>Check: History panel shows progress bar</li>
+                    <li>Solution: Refresh page; if still stuck after 1 hour, contact admin</li>
+                </ul>
+            </div>
+
+            <h3>LexicMap Tool Issues</h3>
+
+            <div class="warning">
+                <strong>Problem:</strong> "No results found"<br>
+                <strong>Solutions:</strong>
+                <ul>
+                    <li>Lower thresholds: Reduce <code>align_min_match_pident</code> to 70%</li>
+                    <li>Lower coverage: Reduce <code>min_qcov_per_genome</code> to 50%</li>
+                    <li>Check database: Ensure appropriate reference database selected</li>
+                    <li>Validate query: Confirm sequences are from prokaryotes</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>Problem:</strong> Too many results (thousands of hits)<br>
+                <strong>Solutions:</strong>
+                <ul>
+                    <li>Increase identity: Set <code>align_min_match_pident</code> to 90-95%</li>
+                    <li>Increase coverage: Set <code>min_qcov_per_genome</code> to 80-90%</li>
+                    <li>Limit genomes: Set <code>top_n_genomes</code> to 100 or 1000</li>
+                    <li>Check query: Very common genes (16S, housekeeping) produce many hits</li>
+                </ul>
+            </div>
+
+            <h3>BioBlend / API Issues</h3>
+
+            <div class="warning">
+                <strong>Problem:</strong> "Invalid API key" error<br>
+                <strong>Solutions:</strong>
+                <ul>
+                    <li>Check: API key copied correctly (no spaces)</li>
+                    <li>Regenerate: Create new API key in Galaxy</li>
+                    <li>Check URL: Ensure using correct Galaxy instance URL</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>Additional Resources</h2>
+
+            <h3>Galaxy Documentation</h3>
+            <ul>
+                <li><strong>Main Galaxy Help</strong>: <a href="https://help.galaxyproject.org/" target="_blank">https://help.galaxyproject.org/</a></li>
+                <li><strong>Training Materials</strong>: <a href="https://training.galaxyproject.org/" target="_blank">https://training.galaxyproject.org/</a></li>
+                <li><strong>API Documentation</strong>: <a href="https://usegalaxy.org/api/docs" target="_blank">https://usegalaxy.org/api/docs</a></li>
+                <li><strong>Test Instance</strong>: <a href="https://test.galaxyproject.org/" target="_blank">https://test.galaxyproject.org/</a></li>
+            </ul>
+
+            <h3>BioBlend Resources</h3>
+            <ul>
+                <li><strong>Documentation</strong>: <a href="https://bioblend.readthedocs.io/" target="_blank">https://bioblend.readthedocs.io/</a></li>
+                <li><strong>GitHub</strong>: <a href="https://github.com/galaxyproject/bioblend" target="_blank">https://github.com/galaxyproject/bioblend</a></li>
+                <li><strong>API Reference</strong>: <a href="https://bioblend.readthedocs.io/en/latest/api_docs/galaxy/all.html" target="_blank">API Reference</a></li>
+            </ul>
+
+            <h3>LexicMap Resources</h3>
+            <ul>
+                <li><strong>GitHub Repository</strong>: <a href="https://github.com/shenwei356/LexicMap" target="_blank">https://github.com/shenwei356/LexicMap</a></li>
+                <li><strong>Official Documentation</strong>: <a href="https://bioinf.shenwei.me/LexicMap/" target="_blank">https://bioinf.shenwei.me/LexicMap/</a></li>
+                <li><strong>Publication</strong>: Shen et al. (2025), Nature Biotechnology</li>
+                <li><strong>Bioconda</strong>: <a href="https://anaconda.org/bioconda/lexicmap" target="_blank">https://anaconda.org/bioconda/lexicmap</a></li>
+            </ul>
+        </section>
+
+        <section id="quick-ref">
+            <h2>Quick Reference</h2>
+
+            <h3>Essential Links</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Test Galaxy Instance</strong></td>
+                        <td><a href="https://test.galaxyproject.org/" target="_blank">https://test.galaxyproject.org/</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Test History</strong></td>
+                        <td><a href="https://test.galaxyproject.org/u/anton/h/test-history" target="_blank">https://test.galaxyproject.org/u/anton/h/test-history</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>LexicMap Tool</strong></td>
+                        <td><a href="https://test.galaxyproject.org/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Flexicmap%2Flexicmap_search%2F0.8.0%2Bgalaxy0" target="_blank">Direct Link</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>API Docs</strong></td>
+                        <td><a href="https://test.galaxyproject.org/api/docs" target="_blank">https://test.galaxyproject.org/api/docs</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>LexicMap Parameter Quick Reference</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Gene Search</th>
+                        <th>Plasmid Search</th>
+                        <th>Strict Match</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Min % identity</td>
+                        <td>80</td>
+                        <td>70</td>
+                        <td>95</td>
+                    </tr>
+                    <tr>
+                        <td>Min qcov genome</td>
+                        <td>70</td>
+                        <td>50</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>Min qcov HSP</td>
+                        <td>70</td>
+                        <td>0</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>Min match length</td>
+                        <td>-</td>
+                        <td>1000</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Top N genomes</td>
+                        <td>10000</td>
+                        <td>10000</td>
+                        <td>1000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="footer">
+            <p><strong>Document Version:</strong> 1.0 | <strong>Last Updated:</strong> November 2024</p>
+            <p><strong>Galaxy Test Instance Version:</strong> 26.0 | <strong>LexicMap Tool Version:</strong> 0.8.0+galaxy0</p>
+            <p><strong>Compatible BioBlend Version:</strong> 1.6.0+</p>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑ Top</a>
+
+    <script>
+        // Back to top button functionality
+        window.onscroll = function() {
+            var backToTop = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        document.getElementById("backToTop").addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
