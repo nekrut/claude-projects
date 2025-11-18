@@ -1,0 +1,37 @@
+# Assembly name:  Cand_auris_B8441_V3
+# Organism name:  Candidozyma auris (budding yeasts & others)
+# Infraspecific name:  strain=B8441
+# Taxid:          498019
+# BioSample:      SAMN05379624
+# BioProject:     PRJNA328792
+# Submitter:      National Center for Emerging and Zoonotic Infectious Diseases- Mycotic Diseases Branch
+# Date:           2024-04-22
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    PEKT03
+# Assembly method: HGAP v. 3
+# Expected final version: yes
+# Reference guided assembly: GCA_002759435.2
+# Genome coverage: 80.0x
+# Sequencing technology: PacBio
+# GenBank assembly accession: GCA_002759435.3
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002759455.3		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold00001	assembled-molecule	1	Chromosome	CM076438.1	<>	na	Primary Assembly	4155382	na
+scaffold00002	assembled-molecule	2	Chromosome	CM076439.1	<>	na	Primary Assembly	2367702	na
+scaffold00003	assembled-molecule	3	Chromosome	CM076440.1	<>	na	Primary Assembly	1689892	na
+scaffold00004	assembled-molecule	4	Chromosome	CM076441.1	<>	na	Primary Assembly	1443242	na
+scaffold00005	assembled-molecule	5	Chromosome	CM076442.1	<>	na	Primary Assembly	1007788	na
+scaffold00006	assembled-molecule	6	Chromosome	CM076443.1	<>	na	Primary Assembly	964688	na
+scaffold00007	assembled-molecule	7	Chromosome	CM076444.1	<>	na	Primary Assembly	777906	na
