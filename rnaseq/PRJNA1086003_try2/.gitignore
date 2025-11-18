@@ -1,0 +1,14 @@
+# Large data files
+*.pdf
+*.tsv
+*.csv
+*.xlsx
+
+# Except important result summaries
+!top_*_genes_comparison.csv
+!sample_info_deseq2.csv
+!collection_groups.json
+
+# Python cache
+__pycache__/
+*.pyc

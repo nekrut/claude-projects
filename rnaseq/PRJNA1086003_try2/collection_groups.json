@@ -1,0 +1,47 @@
+{
+  "Aggregative_InVitro": {
+    "samples": [
+      "SRR28790270",
+      "SRR28790274",
+      "SRR28790272"
+    ],
+    "tags": [
+      "phenotype:Aggregative",
+      "condition:InVitro"
+    ]
+  },
+  "Aggregative_InVivo": {
+    "samples": [
+      "SRR28791430",
+      "SRR28791431",
+      "SRR28791432"
+    ],
+    "tags": [
+      "phenotype:Aggregative",
+      "condition:InVivo"
+    ]
+  },
+  "NonAggregative_InVitro": {
+    "samples": [
+      "SRR28790276",
+      "SRR28790278",
+      "SRR28790280"
+    ],
+    "tags": [
+      "phenotype:NonAggregative",
+      "condition:InVitro"
+    ]
+  },
+  "NonAggregative_InVivo": {
+    "samples": [
+      "SRR28791433",
+      "SRR28791434",
+      "SRR28791437",
+      "SRR28791438"
+    ],
+    "tags": [
+      "phenotype:NonAggregative",
+      "condition:InVivo"
+    ]
+  }
+}

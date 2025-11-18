@@ -1,0 +1,14 @@
+Run,Strain,Phenotype,Condition,Group
+SRR28790270,AR0382,Aggregative,In_vitro,AR0382_invitro
+SRR28790274,AR0382,Aggregative,In_vitro,AR0382_invitro
+SRR28790272,AR0382,Aggregative,In_vitro,AR0382_invitro
+SRR28790276,AR0387,Non-aggregative,In_vitro,AR0387_invitro
+SRR28790278,AR0387,Non-aggregative,In_vitro,AR0387_invitro
+SRR28790280,AR0387,Non-aggregative,In_vitro,AR0387_invitro
+SRR28791430,AR0382,Aggregative,In_vivo,AR0382_invivo
+SRR28791431,AR0382,Aggregative,In_vivo,AR0382_invivo
+SRR28791432,AR0382,Aggregative,In_vivo,AR0382_invivo
+SRR28791433,AR0387,Non-aggregative,In_vivo,AR0387_invivo
+SRR28791434,AR0387,Non-aggregative,In_vivo,AR0387_invivo
+SRR28791437,AR0387,Non-aggregative,In_vivo,AR0387_invivo
+SRR28791438,AR0387,Non-aggregative,In_vivo,AR0387_invivo
