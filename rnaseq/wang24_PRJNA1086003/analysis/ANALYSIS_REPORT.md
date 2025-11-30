@@ -12,6 +12,14 @@
 
 ---
 
+## Workflow Diagram
+
+**See workflow diagram**: Galaxy dataset #102 (`galaxy_workflow_diagram.png`)
+
+![Workflow Diagram](galaxy_workflow_diagram.png)
+
+---
+
 ## Galaxy Resources
 
 ### Histories
