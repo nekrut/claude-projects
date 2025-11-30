@@ -16,6 +16,10 @@
 
 ## RNA-seq Pipeline
 
+**See workflow diagram**: Galaxy dataset #387 (`galaxy_workflow_diagram.png`)
+
+![Workflow Diagram](galaxy_workflow_diagram.png)
+
 ### Pre-processing (existing in history)
 1. **Raw Data**: 6 paired-end samples (#14)
 2. **QC**: FastQC (#274), fastp trimming (#29)
@@ -97,6 +101,8 @@ Both comparisons achieved **EXCELLENT** quality status:
 | #381 | AR0382_tnSWI1 Counts | Mutant samples (n=2) |
 | #382 | DESeq2 Results | AR0382 vs tnSWI1 |
 | #384 | DESeq2 Results | AR0382 vs AR0387 |
+| #386 | ANALYSIS_REPORT.md | This report |
+| #387 | galaxy_workflow_diagram.png | Workflow diagram |
 
 ## Conclusions
 
