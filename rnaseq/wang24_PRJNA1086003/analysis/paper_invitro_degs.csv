@@ -1,0 +1,77 @@
+Gene_ID,LFC,FDR,Gene_Name,Description
+B9J08_001458,8.611549656,4.78e-29,SCF1,Ortholog of Candida lusitaniae ATCC 42720 : CLUG_05295
+B9J08_004451,6.809597233,7.97e-37,,Protein of unknown function
+B9J08_000592,5.991984446,5.93e-25,,"Has domain(s) with predicted DNA-binding transcription factor activity, RNA polymerase II-specific, zinc ion binding activity and role in regulation of DNA-templated transcription"
+B9J08_001515,5.163949028,5.69e-28,,"Has domain(s) with predicted heme binding, iron ion binding, monooxygenase activity, oxidoreductase activity, acting on paired donors and with incorporation or reduction of molecular oxygen, more"
+B9J08_004112,5.069252626,3.81e-24,ALS4112,Putative cell-surface adhesin; increases in expression in response to caspofungin; associated with autoaggregation that may contribute to stress adaption
+B9J08_004100,4.965966819,2.5e-19,,Protein of unknown function
+B9J08_005072,4.733923989,1.92e-16,,"Ortholog of C. albicans SC5314 : C2_08260W_A, C. dubliniensis CD36 : Cd36_22390, C. parapsilosis CDC317 : CPAR2_805760 and Candida tenuis NRRL Y-1498 : CANTEDRAFT_104120"
+B9J08_001581,4.336657823,1.31e-17,,"Has domain(s) with predicted ATP binding, ATPase, nucleotide binding, transporter activity and membrane localization"
+B9J08_003891,4.000801888,2.38e-05,,Protein of unknown function
+B9J08_001899,3.890896381,7.92e-10,,"Has domain(s) with predicted ABC-type transporter activity, ATP binding, ATPase activity, role in transmembrane transport and membrane localization"
+B9J08_001155,3.88616764,6.51e-12,,Protein of unknown function
+B9J08_004109,3.624762839,1.86e-10,,Ortholog of Candida lusitaniae ATCC 42720 : CLUG_05599
+B9J08_004446,3.552788117,1.34e-10,,"Has domain(s) with predicted ATP binding, ATPase activity"
+B9J08_002630,3.374752104,1e-07,,"Ortholog(s) have ammonium transmembrane transporter activity and role in ammonium transmembrane transport, nitrogen utilization"
+B9J08_004545,3.32557288,6.49e-05,,Has domain(s) with predicted oligopeptide transmembrane transporter activity and role in transmembrane transport
+B9J08_004602,3.251021232,3.15e-10,,"Ortholog(s) have oligopeptide transmembrane transporter activity, proton-dependent oligopeptide secondary active transmembrane transporter activity, tetrapeptide transmembrane transporter activity"
+B9J08_003657,3.082734328,2.16e-08,,"Ortholog(s) have high-affinity zinc transmembrane transporter activity, low-affinity zinc ion transmembrane transporter activity, role in zinc ion import across plasma membrane and plasma membrane localization"
+B9J08_002333,3.062818239,3.82e-06,,Protein of unknown function
+B9J08_004098,3.041084229,4.62e-08,,Protein of unknown function
+B9J08_002660,3.040690684,1.63e-10,,"Has domain(s) with predicted transmembrane transporter activity, role in transmembrane transport and membrane localization"
+B9J08_004544,2.978247066,8.34e-08,,Has domain(s) with predicted oligopeptide transmembrane transporter activity and role in transmembrane transport
+B9J08_004204,2.973014424,1e-07,,"Has domain(s) with predicted transmembrane transporter activity, role in transmembrane transport and membrane localization"
+B9J08_004066,2.854418732,5.92e-09,,"Ortholog(s) have glutathione transmembrane transporter activity, role in glutathione import across plasma membrane, glutathione transmembrane transport and plasma membrane, plasma membrane of cell tip localization"
+B9J08_000117,2.758624087,0.008373635,,"Ortholog of C. albicans SC5314 : C4_04080C_A/PGA31, C. dubliniensis CD36 : Cd36_43780, Candida tenuis NRRL Y-1498 : CANTEDRAFT_115824 and Pichia stipitis Pignal : PICST_43383"
+B9J08_004161,2.570438646,0.006220313,ERG5,"Has domain(s) with predicted heme binding, iron ion binding, monooxygenase activity, oxidoreductase activity, acting on paired donors and with incorporation or reduction of molecular oxygen, more"
+B9J08_001362,2.522523949,2.13e-08,,"Ortholog(s) have L-leucine transmembrane transporter activity, amino acid transmembrane transporter activity and role in amino acid transport, leucine import across plasma membrane, transmembrane transport"
+B9J08_001660,2.513548103,1.58e-06,,"Has domain(s) with predicted copper ion binding, primary amine oxidase activity, quinone binding activity and role in amine metabolic process"
+B9J08_002256,2.496233047,3.7e-06,,Protein of unknown function
+B9J08_000005,2.457678612,0.000207787,,Protein of unknown function
+B9J08_004842,2.413905046,0.007684357,,Ortholog of Candida lusitaniae ATCC 42720 : CLUG_02350
+B9J08_000008,2.304913816,0.000515597,,Has domain(s) with predicted oxidoreductase activity
+B9J08_002886,2.298180043,6.56e-07,,Ortholog(s) have role in intracellular phosphate ion homeostasis
+B9J08_000724,2.258819336,1.02e-06,,"Ortholog of C. albicans SC5314 : C1_10060C_A, C. dubliniensis CD36 : Cd36_09460, C. parapsilosis CDC317 : CPAR2_700850 and Candida tenuis NRRL Y-1498 : CANTEDRAFT_114857"
+B9J08_004479,2.236139057,1.86e-05,,Has domain(s) with predicted oligopeptide transmembrane transporter activity and role in transmembrane transport
+B9J08_001673,2.142481412,1.06e-05,,"Has domain(s) with predicted role in amino acid transport, transmembrane transport and membrane localization"
+B9J08_000398,2.121091351,0.000216448,SAP7,"Putative aspartic-type endopeptidase; appears to play a minor role, if any; null mutant shows normal secretion of aspartyl protease and normal formation of biofilms and hyphae"
+B9J08_002227,2.089244844,1.15e-05,,"Has domain(s) with predicted transmembrane transporter activity, role in transmembrane transport and membrane localization"
+B9J08_000266,1.914482416,0.00096668,,Protein of unknown function
+B9J08_003694,1.892605862,0.000599977,,"Ortholog of C. albicans SC5314 : C1_05520W_A, C. dubliniensis CD36 : Cd36_05240, C. parapsilosis CDC317 : CPAR2_107620 and Candida tenuis NRRL Y-1498 : CANTEDRAFT_133479"
+B9J08_002251,1.878771708,0.007738164,,"Has domain(s) with predicted transmembrane transporter activity, role in transmembrane transport and membrane localization"
+B9J08_004135,1.858636846,0.000178405,,Has domain(s) with predicted role in regulation of DNA-templated transcription
+B9J08_001132,1.742351286,0.008373635,,Ortholog(s) have role in nonfunctional rRNA decay and cytoplasm localization
+B9J08_004514,1.679008015,0.008373635,,"Ortholog of C. albicans SC5314 : CR_09190C_A, C. dubliniensis CD36 : Cd36_34570, C. parapsilosis CDC317 : CPAR2_701240 and Candida tenuis NRRL Y-1498 : CANTEDRAFT_115405"
+B9J08_003910,1.629414231,0.001754898,,Has domain(s) with predicted structural constituent of cell wall activity and cell wall localization
+B9J08_000594,1.623024118,0.003703983,,Has domain(s) with predicted phosphatidylinositol binding activity
+B9J08_002055,1.549234935,0.006220313,,Protein of unknown function
+B9J08_003563,1.49771691,0.007738164,,"Has domain(s) with predicted oxidoreductase activity, zinc ion binding activity"
+B9J08_004097,-1.421728708,0.007716893,,Has domain(s) with predicted transmembrane transporter activity and role in transmembrane transport
+B9J08_004775,-1.55091249,0.007738164,TPO3,Putative polyamine transporter of the MFS-MDR family; expression increases ~12-fold in strains with evolved resistance to fluconazole and voriconazole
+B9J08_001952,-1.640500652,0.008373635,,"Has domain(s) with predicted transmembrane transporter activity, role in transmembrane transport and membrane localization"
+B9J08_004798,-1.642345188,0.002644308,,"Ortholog(s) have ornithine carbamoyltransferase activity, role in arginine biosynthetic process, arginine biosynthetic process via ornithine and cytosol, mitochondrion localization"
+B9J08_003449,-1.69101864,0.006761363,,"Ortholog(s) have glycerol-3-phosphate dehydrogenase [NAD(P)+] activity and role in NADH oxidation, glycerol biosynthetic process, intracellular accumulation of glycerol, protein import into peroxisome matrix"
+B9J08_000170,-1.74827222,0.000769219,,"Ortholog(s) have role in endocytosis, iron ion transmembrane transport and fungal-type vacuole membrane, membrane raft localization"
+B9J08_002217,-1.828012597,0.000261819,,"Has domain(s) with predicted DNA binding, DNA-binding transcription factor activity, RNA polymerase II-specific, zinc ion binding activity and role in DNA-templated transcription, regulation of DNA-templated transcription"
+B9J08_002951,-1.872277898,7.21e-05,,Has domain(s) with predicted membrane localization
+B9J08_002218,-1.899580713,0.000270168,,Protein of unknown function
+B9J08_004830,-2.029188872,0.002017754,,Ortholog(s) have endoplasmic reticulum localization
+B9J08_005317,-2.116388369,0.006956355,,"Ortholog(s) have RNA polymerase II-specific DNA-binding transcription factor binding activity and role in negative regulation of transcription by RNA polymerase II, positive regulation of transcription by RNA polymerase II"
+B9J08_004444,-2.122859656,4.34e-06,,"Ortholog of C. albicans SC5314 : C3_04840C_A, C. dubliniensis CD36 : Cd36_84810, C. parapsilosis CDC317 : CPAR2_807390 and Candida tenuis NRRL Y-1498 : CANTEDRAFT_116531"
+B9J08_000834,-2.183136408,0.000165461,,"Ortholog of C. albicans SC5314 : C7_00350C_A, C. dubliniensis CD36 : Cd36_70560, C. parapsilosis CDC317 : CPAR2_301610 and Candida tenuis NRRL Y-1498 : cten_CGOB_00180"
+B9J08_001948,-2.186250054,0.001483468,,Protein of unknown function
+B9J08_003491,-2.322053946,1.3e-06,,Protein of unknown function
+B9J08_001520,-2.395215112,3.84e-07,,Protein of unknown function
+B9J08_000221,-2.424533076,9.62e-06,,Protein of unknown function
+B9J08_003903,-2.460713295,9.53e-08,,Ortholog(s) have fungal-type cell wall localization
+B9J08_004365,-2.518487576,4.37e-06,,"Ortholog(s) have succinate:fumarate antiporter activity and role in fumarate transport, succinate transport"
+B9J08_000438,-2.530768008,5.55e-08,,Protein of unknown function
+B9J08_004200,-2.633439453,6.44e-09,,"Ortholog(s) have structural constituent of cell wall activity, role in ascospore-type prospore membrane formation, fungal-type cell wall organization and cellular birth scar, fungal-type cell wall, prospore membrane localization"
+B9J08_002244,-3.032463794,1.44e-10,,Protein of unknown function
+B9J08_005560,-3.077447365,5.54e-12,,Protein of unknown function
+B9J08_003908,-3.441573375,2.1e-13,,Has domain(s) with predicted transmembrane transporter activity and role in transmembrane transport
+B9J08_003981,-4.034310333,9.44e-17,MDR1,Putative efflux transporter of the major facilitator superfamily; expression is increased in some fluconazole-resistant isolates
+B9J08_000656,-4.267964232,4.56e-21,MGD1,Putative methylglyoxal reductase; expression appears to be induced by the transcription factor Mrr1p in response to methylglyoxal and benomyl
+B9J08_002480,-5.266080783,1.86e-28,,"Has domain(s) with predicted transmembrane transporter activity, role in transmembrane transport and membrane localization"
+B9J08_001549,-6.124676706,8.9e-15,,Putative glycosylphosphatidylinositol-anchored protein; unique to C. auris and useful for strain typing; contains an N-terminal signal peptide for secretion and a C-terminal glycosylphosphatidylinositol
+B9J08_002136,-10,1.1e-77,,"Has domain(s) with predicted DNA-binding transcription factor activity, RNA polymerase II-specific, zinc ion binding activity and role in regulation of DNA-templated transcription"
