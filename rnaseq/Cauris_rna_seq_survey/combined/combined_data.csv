@@ -1,0 +1,33 @@
+pmid,year,source,genome,focus,in_geo
+32581078,2020,Claude (PubMed),N/A,Biofilm,False
+33937102,2021,Claude (PubMed),B11221,Drug resistance,True
+34354695,2021,Claude (PubMed),N/A,Drug resistance,False
+34485470,2021,Claude (PubMed),GCA_002759435,Stress response,False
+34630944,2021,Claude (Europe PMC),B8441,Drug resistance,False
+34788438,2021,Claude (PubMed),B8441,Small RNA,False
+35652307,2022,Claude (PubMed),B8441,Drug resistance,True
+35968956,2022,Claude (Europe PMC),B8441,Drug resistance,False
+36913408,2023,Claude (Europe PMC),GCA_002759435.2,Biofilm,False
+37350781,2023,Claude (PubMed),B11221,Morphotype,False
+37769084,2023,Claude (Repository),GCA_002759435.3,Adhesin,False
+38562758,2024,Claude (Repository),GCA_002759435,Adhesin,False
+38990436,2024,Claude (PubMed),N/A,Host-pathogen,False
+PMC11385638,2024,Claude (PubMed),B11221,Drug resistance,False
+PMC11459930,2024,Claude (Europe PMC),B8441,Drug resistance,False
+40099908,2025,Claude (Europe PMC),B8441,Drug resistance,False
+33983315,2021,ChatGPT,B8441,Stress response,False
+33995473,2021,ChatGPT,B8441,Phenotype,False
+34462177,2021,ChatGPT,B8441,Stress response,False
+34778924,2021,ChatGPT,B8441,Drug resistance,False
+35649081,2022,ChatGPT,B8441,Adhesin,False
+37548469,2023,ChatGPT,Isolate 12,Stress response,True
+37925028,2025,ChatGPT,B8441,Morphotype,False
+38537618,2024,ChatGPT,B8441,Biofilm,True
+38745637,2024,ChatGPT,B8441,Host-pathogen,False
+33077664,2020,GEO,B8441,Drug resistance,True
+35142597,2022,GEO,B8441,Host-pathogen,True
+32839538,2020,GEO,Human,Host-pathogen,True
+34083769,2021,GEO,B8441,Stress response,True
+34643421,2021,GEO,B8441,Stress response,True
+29997121,2018,GEO,B8441,Biofilm,True
+30559369,2018,GEO,B8441,Drug resistance,True
