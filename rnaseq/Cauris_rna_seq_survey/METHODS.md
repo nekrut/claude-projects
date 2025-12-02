@@ -6,8 +6,8 @@ This document describes the methodology used to create the comprehensive RNA-seq
 
 **Date of search**: December 2, 2025
 **Search scope**: Publications from 2020-2025
-**Total studies identified**: 14 RNA-seq studies
-**Databases searched**: PubMed/PubMed Central + Europe PMC
+**Total studies identified**: 16 RNA-seq studies
+**Sources**: PubMed/PubMed Central + Europe PMC + Repository Analysis
 **AI Assistant**: Claude Sonnet 4.5 (Anthropic)
 
 ---
@@ -63,6 +63,41 @@ Following the initial PubMed search, a comprehensive search was conducted on Eur
 - **Cross-validation**: Overlap between databases confirms comprehensive coverage
 - **Completeness**: Ensures recently published or early online articles are captured
 - **Different indexing**: Some articles may be more readily discoverable through Europe PMC's interface
+
+### 4. Repository Analysis (Tertiary Search)
+
+After completing database searches, two additional studies were identified through analysis of BioProject data already present in the local repository:
+
+#### Repository Projects Analyzed:
+1. **PRJNA904261** (santana24_PRJNA904261 directory)
+   - Santana et al. (2023) - Science
+   - SCF1 adhesin characterization
+   - PMID: 37769084
+
+2. **PRJNA1086003** (wang24_PRJNA1086003 directory)
+   - Wang et al. (2024) - Nature Communications
+   - Functional redundancy in cell surface adhesins
+   - PMID: 38562758
+
+#### Why These Were Not Found in Database Searches:
+- RNA-seq was a **supporting methodology** rather than the primary focus
+- Paper titles/abstracts emphasize functional phenotypes:
+  - "adhesin," "colonization," "surface association," "virulence"
+  - NOT "RNA-seq," "transcriptome," or "differential expression"
+- Published in high-impact general science journals (Science, Nature Communications)
+- Comprehensive functional studies where transcriptomics was one of multiple methods
+
+#### Discovery Process:
+1. Existing analysis reports in repository referenced these BioProjects
+2. Papers were retrieved via PubMed ID lookup
+3. Full-text methods sections confirmed RNA-seq methodology
+4. Technical details extracted from repository analysis reports
+
+#### Implications for Literature Searches:
+- **Database keyword searches have limitations** - they miss papers where RNA-seq is secondary
+- **Repository-based discovery** is essential for comprehensive coverage
+- High-impact functional studies often use RNA-seq without emphasizing it in titles/abstracts
+- **BioProject/SRA searches** should complement traditional literature searches
 
 ---
 
@@ -306,16 +341,18 @@ To enhance this survey in future iterations:
 ## Summary Statistics
 
 ### Search Coverage
-**Total searches performed**: 15+ distinct search queries across two databases
+**Total searches performed**: 15+ distinct search queries across two databases plus repository analysis
 **Papers identified in PubMed search**: ~20+ candidate papers
 **Papers identified in Europe PMC search**: ~15+ candidate papers (5 new papers not in PubMed results)
-**Papers with full-text access**: 14 papers
-**Papers included in final table**: 14 papers (2020-2025)
+**Papers identified through repository analysis**: 2 high-impact papers
+**Papers with full-text access**: 16 papers
+**Papers included in final table**: 16 papers (2020-2025)
 
-### Database Breakdown
+### Source Breakdown
 **PubMed/PubMed Central**: 9 papers
 **Europe PMC (exclusive)**: 5 papers
-**Total unique papers**: 14 papers
+**Repository Analysis (exclusive)**: 2 papers
+**Total unique papers**: 16 papers
 
 ### Research Characteristics
 **Geographic distribution**: China, USA, Europe, India, Middle East

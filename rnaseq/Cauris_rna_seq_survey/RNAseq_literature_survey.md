@@ -18,6 +18,8 @@ This document contains a comprehensive survey of RNA-seq studies performed on *C
 | [35968956](https://pubmed.ncbi.nlm.nih.gov/35968956/) | Europe PMC | B8441 (s01-m01-r10) | Comparative transcriptomics: echinocandin-resistant vs. susceptible isolates | FastQC, cutadapt, NextGenMap, Picard, HTseq, edgeR, clusterProfiler, VennDiagram |
 | [36913408](https://pubmed.ncbi.nlm.nih.gov/36913408/) | Europe PMC | GCA_002759435.2 | Differential expression analysis: aggregative vs. nonaggregative strains (biofilm) | HiSat2 v2.0.5, Stringtie v1.3.3b, DESeq2, Illumina NovaSeq 6000 |
 | [37350781](https://pubmed.ncbi.nlm.nih.gov/37350781/) | PubMed | B11221 | Transcriptomic profiling: rough vs. smooth morphotypes | Bowtie2, HISAT2, HTSeq, DESeq, topGO, KOBAS, Pheatmap |
+| [37769084](https://pubmed.ncbi.nlm.nih.gov/37769084/) | Repository Analysis | GCA_002759435.3 | Differential expression: SWI1 mutant vs. wild-type, strain comparisons | FastQC, fastp, STAR, featureCounts, DESeq2 |
+| [38562758](https://pubmed.ncbi.nlm.nih.gov/38562758/) | Repository Analysis | GCA_002759435 (B8441/B11109) | Differential expression: aggregative vs. non-aggregative strains (in vitro and in vivo) | DESeq2, Galaxy RNA-seq pipeline |
 | [38990436](https://pubmed.ncbi.nlm.nih.gov/38990436/) | PubMed | N/A | Comparative transcriptomics: host dermal cells infected with *C. auris* | qRT-PCR, flow cytometry, KEGG, Reactome analyses |
 | [PMC11385638](https://pmc.ncbi.nlm.nih.gov/articles/PMC11385638/) | PubMed | B11221 | Differential expression analysis: reduced AmB sensitivity | DESeq2, KEGG, Gene Ontology, STRING database, qPCR, Illumina NovaSeq |
 | [PMC11459930](https://pmc.ncbi.nlm.nih.gov/articles/PMC11459930/) | Europe PMC | B8441 (GCA_002759435.2) | Whole transcriptome sequencing: pan-drug resistant strains | HISAT2 v2.2.1, StringTie v1.3.3b, Ballgown v3.15, BiNGO, HMMER v3.3.2, CLC Genomics Server v23 |
@@ -27,8 +29,9 @@ This document contains a comprehensive survey of RNA-seq studies performed on *C
 
 ### 1. Most Common Genome Reference Versions
 
-- **B8441 (GCA_002759435)** - Clade I reference strain, most widely used (8 studies)
+- **B8441 (GCA_002759435)** - Clade I reference strain, most widely used (9 studies)
 - **B11221 (GCF_002775015.1)** - Clade III reference strain (3 studies)
+- **GCA_002759435.3** - Updated version used in repository analyses (1 study)
 - Several studies did not specify genome version in accessible materials
 
 ### 2. Types of RNA-seq Analysis
@@ -234,6 +237,57 @@ Most studies used similar statistical cutoffs for identifying differentially exp
 
 ---
 
+### PMID: 37769084 (2023) - NEW from Repository Analysis
+**Title**: A Candida auris-specific adhesin, Scf1, governs surface association, colonization, and virulence
+
+**Data Source**: Repository Analysis (santana24_PRJNA904261)
+
+**Journal**: Science 381(6665):1461-1467
+
+**BioProject**: [PRJNA904261](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA904261)
+
+**Focus**: Identification and characterization of SCF1 (Surface Colonization Factor 1), a C. auris-specific adhesin essential for biofilm formation and virulence
+
+**RNA-seq Design**:
+- Comparison 1: AR0382 (wild-type) vs. AR0382_tnSWI1 (SWI1 transposon mutant)
+- Comparison 2: AR0382 (highly adhesive) vs. AR0387 (poorly adhesive)
+- 2 biological replicates per condition
+
+**Key Finding**: SCF1 (B9J08_001458) identified as the most strongly dysregulated gene (log2FC = -6.68 to -7.25), essential for adhesion to surfaces, biofilm formation, skin colonization, and virulence in systemic infection
+
+**Tools**: FastQC, fastp, STAR aligner, featureCounts, DESeq2
+
+**Genome**: GCA_002759435.3
+
+**Repository Analysis**: Validation analysis achieved R² > 0.99 correlation with published results
+
+---
+
+### PMID: 38562758 (2024) - NEW from Repository Analysis
+**Title**: Functional Redundancy in Candida auris Cell Surface Adhesins Crucial for Cell-Cell Interaction and Aggregation
+
+**Data Source**: Repository Analysis (wang24_PRJNA1086003)
+
+**Journal**: Nature Communications (2024)
+
+**BioProject**: [PRJNA1086003](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1086003)
+
+**Focus**: Cell surface glycan-lectin interactions modulate C. auris colonization and fungemia; comparison of aggregative vs. non-aggregative strains
+
+**RNA-seq Design**:
+- **In vitro**: AR0382 (aggregative, B11109) vs. AR0387 (non-aggregative, B8441), 3 replicates each
+- **In vivo**: Same strain comparison during murine infection, 3-4 replicates per strain
+
+**Key Finding**: Comprehensive transcriptional analysis revealed differential expression patterns between aggregative and non-aggregative phenotypes during both in vitro growth and in vivo infection
+
+**Tools**: DESeq2, Galaxy RNA-seq pipeline (STAR alignment, featureCounts quantification)
+
+**Genome**: GCA_002759435 (B8441 and B11109 reference)
+
+**Significance threshold**: FDR < 0.01
+
+---
+
 ### PMID: 38990436 (2024)
 **Title**: Transcriptome Analysis of Human Dermal Cells Infected with Candida auris Identified Unique Pathogenesis/Defensive Mechanisms Particularly Ferroptosis
 
@@ -349,7 +403,7 @@ Most studies converge on similar bioinformatics pipelines:
 
 ---
 
-## Comparison: PubMed vs. Europe PMC Search Results
+## Comparison: PubMed vs. Europe PMC vs. Repository Analysis
 
 ### Papers Found Exclusively Through Europe PMC Search:
 1. **PMID: 34630944** - Caspofungin transcriptional/translational landscape (2021)
@@ -358,14 +412,28 @@ Most studies converge on similar bioinformatics pipelines:
 4. **PMC11459930** - Pan-drug resistance (2024)
 5. **PMID: 40099908** - Flucytosine resistance evolution (2025)
 
+### Papers Found Through Repository Analysis:
+Two major studies were identified through analysis of existing repository datasets, not through literature searches:
+1. **PMID: 37769084** - Santana et al. (2023) - SCF1 adhesin characterization (Science)
+2. **PMID: 38562758** - Wang et al. (2024) - Functional redundancy in adhesins (Nature Communications)
+
+**Why these were missed in database searches:**
+- RNA-seq was a supporting methodology, not the primary focus
+- Papers emphasize functional phenotypes (adhesion, biofilm, colonization) over transcriptomics
+- Search terms focused on "RNA-seq," "transcriptome," "differential expression" as primary keywords
+
 ### Overlapping Papers:
 Most papers from the PubMed search were also indexed in Europe PMC, confirming cross-database coverage.
 
 ### Search Effectiveness:
 - **PubMed**: Excellent for established literature, strong PMID coverage
 - **Europe PMC**: Better for recent publications, European research output, integrated with other databases
+- **Repository Analysis**: Essential for identifying papers where RNA-seq is secondary methodology; captures high-impact studies in top-tier journals (Science, Nature Communications) that may not emphasize sequencing in titles/abstracts
 
-**Recommendation**: Use both databases for comprehensive literature reviews.
+**Recommendation**: Use multiple approaches for comprehensive literature reviews:
+1. Database searches (PubMed + Europe PMC)
+2. BioProject/SRA repository searches
+3. Citation tracking from key papers
 
 ---
 
@@ -374,6 +442,7 @@ Most papers from the PubMed search were also indexed in Europe PMC, confirming c
 **Primary Searches**:
 1. PubMed and PubMed Central (December 2, 2025)
 2. Europe PMC (December 2, 2025)
+3. Repository Analysis (December 2, 2025) - Analysis of existing BioProjects in local repository
 
 **Search terms included**:
 - "Candida auris RNA-seq"
@@ -383,10 +452,10 @@ Most papers from the PubMed search were also indexed in Europe PMC, confirming c
 - Various combinations with specific years (2020-2025)
 - Drug-specific terms (caspofungin, amphotericin B, echinocandin, flucytosine)
 
-**Total studies identified**: 14 RNA-seq studies (2020-2025)
+**Total studies identified**: 16 RNA-seq studies (2020-2025)
 
 ---
 
 **Document created**: December 2, 2025
 **Last updated**: December 2, 2025
-**Version**: 2.0 (Combined PubMed + Europe PMC)
+**Version**: 3.0 (Combined PubMed + Europe PMC + Repository Analysis)
