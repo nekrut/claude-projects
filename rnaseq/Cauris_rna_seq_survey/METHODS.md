@@ -6,7 +6,8 @@ This document describes the methodology used to create the comprehensive RNA-seq
 
 **Date of search**: December 2, 2025
 **Search scope**: Publications from 2020-2025
-**Total studies identified**: 9 RNA-seq studies
+**Total studies identified**: 14 RNA-seq studies
+**Databases searched**: PubMed/PubMed Central + Europe PMC
 **AI Assistant**: Claude Sonnet 4.5 (Anthropic)
 
 ---
@@ -33,7 +34,35 @@ Multiple search queries were executed using web search tools to identify relevan
 The following databases were searched:
 - **PubMed** (pubmed.ncbi.nlm.nih.gov)
 - **PubMed Central** (pmc.ncbi.nlm.nih.gov) for full-text articles
-- **Journal websites** (ASM Journals, Frontiers, Nature Communications) when full text was accessible
+- **Europe PMC** (europepmc.org) - European biomedical literature database
+- **Journal websites** (ASM Journals, Frontiers, Nature Communications, PLOS Pathogens) when full text was accessible
+
+### 3. Europe PMC Search (Secondary Search)
+
+Following the initial PubMed search, a comprehensive search was conducted on Europe PMC to identify additional studies that may have been missed:
+
+#### Europe PMC Search Terms:
+- `site:europepmc.org "Candida auris" RNA-seq 2020-2025`
+- `site:europepmc.org Candidozyma auris transcriptome sequencing`
+- `site:europepmc.org "Candida auris" differential expression RNA sequencing`
+- `europepmc.org Candida auris RNA-seq transcriptome 2020 2021 2022`
+- `europepmc.org Candida auris transcriptome 2023 2024`
+- `"Candida auris" caspofungin transcriptional translational landscape PMID 2021`
+- `"Candida auris" RNA-seq biofilm aggregation PMID 2020 2021 2022 2023`
+- `"Candida auris" RNA-seq PMID 2024 flucytosine resistance`
+
+#### Additional Papers Identified Through Europe PMC:
+1. **PMID: 34630944** - Caspofungin response (transcriptional and translational landscape)
+2. **PMID: 35968956** - Echinocandin resistance transcriptomics
+3. **PMID: 36913408** - ALS4 gene amplification and biofilm formation
+4. **PMC11459930** - Pan-drug resistant strains
+5. **PMID: 40099908** - Flucytosine resistance evolution (2025)
+
+#### Rationale for Dual-Database Search:
+- **Complementary coverage**: Europe PMC indexes European research outputs and may have different emphasis than PubMed
+- **Cross-validation**: Overlap between databases confirms comprehensive coverage
+- **Completeness**: Ensures recently published or early online articles are captured
+- **Different indexing**: Some articles may be more readily discoverable through Europe PMC's interface
 
 ---
 
@@ -276,14 +305,23 @@ To enhance this survey in future iterations:
 
 ## Summary Statistics
 
-**Total searches performed**: 8-10 distinct search queries
-**Papers identified**: ~20+ candidate papers
-**Papers with full-text access**: 9 papers
-**Papers included in final table**: 9 papers
+### Search Coverage
+**Total searches performed**: 15+ distinct search queries across two databases
+**Papers identified in PubMed search**: ~20+ candidate papers
+**Papers identified in Europe PMC search**: ~15+ candidate papers (5 new papers not in PubMed results)
+**Papers with full-text access**: 14 papers
+**Papers included in final table**: 14 papers (2020-2025)
 
-**Geographic distribution**: China, USA, Europe, India
-**Date range**: 2020-2024
+### Database Breakdown
+**PubMed/PubMed Central**: 9 papers
+**Europe PMC (exclusive)**: 5 papers
+**Total unique papers**: 14 papers
+
+### Research Characteristics
+**Geographic distribution**: China, USA, Europe, India, Middle East
+**Date range**: 2020-2025 (one paper published January 2025)
 **Most common clade studied**: Clade I (B8441) and Clade III (B11221)
+**Primary research focus**: Antifungal drug resistance (>50% of studies)
 
 ---
 
