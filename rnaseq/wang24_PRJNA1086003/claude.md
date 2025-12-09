@@ -5,6 +5,6 @@
 
 ## Galaxy artifacts
 
-- Galaxy history: https://usegalaxy.org/u/cartman/h/prjna1086003-final
-- Collection with counts: #407
+- Galaxy history: https://usegalaxy.org/u/cartman/h/prjna1086003-perm
+- Collection with counts: #433
 
