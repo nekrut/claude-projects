@@ -106,12 +106,12 @@
 
 ### DEG Statistics
 
-| Condition | Paper DEGs | Our DEGs | Correlation (Pearson r) | Direction Agreement |
-|-----------|------------|----------|-------------------------|---------------------|
-| In Vitro | 76 | 73 | 0.9914 | 100% |
-| In Vivo | 259 | ~195 | 1.0000 | 100% |
+| Condition | Paper DEGs | Mapped | R² | Slope | Direction Agreement | Mean |LFC diff| |
+|-----------|------------|--------|-----|-------|---------------------|------------------|
+| In Vitro | 76 | 76 | **0.9780** | 1.07 | 100% | 0.077 |
+| In Vivo | 259 | 259 | **0.9998** | 1.00 | 100% | 0.012 |
 
-### Key Finding: Genome Annotation Discrepancy
+### Gene ID Mapping
 
 The published paper used a different genome annotation version for *C. auris* strain B8441:
 
@@ -119,9 +119,9 @@ The published paper used a different genome annotation version for *C. auris* st
 |-----------|-------|--------------|
 | Gene ID Format | B9J08_XXXXXX (6-digit suffix) | B9J08_XXXXX (5-digit suffix) |
 | Example | B9J08_001458 | B9J08_03708 |
-| Total Genes | ~5,600 | 5,593 |
+| Annotation | GCA_002759435.2 | GCA_002759435.3 |
 
-**Resolution**: Gene mapping was established using log2 fold change correlation, achieving near-perfect matching (r > 0.99).
+**Resolution**: Gene IDs mapped using official NCBI `old_locus_tag` attribute from the GCA_002759435.3 GTF file, which provides authoritative correspondence between annotation versions.
 
 ---
 
@@ -175,13 +175,13 @@ The published paper used a different genome annotation version for *C. auris* st
 
 Our Galaxy-based DESeq2 analysis successfully replicates the findings of Wang et al. (2024):
 
-1. **Quantitative Agreement**: Pearson correlation r > 0.99 for all conditions
+1. **Quantitative Agreement**: R² = 0.98 (in vitro) and 0.9998 (in vivo)
 2. **Qualitative Agreement**: 100% direction agreement for all DEGs
 3. **Key Genes Confirmed**: SCF1, ALS4112, MDR1, and other marker genes show matching expression patterns
 
 ### Technical Notes
 
-1. **Genome annotation version**: Different annotation versions between paper and our analysis required LFC-based gene mapping
+1. **Gene ID mapping**: Official NCBI old_locus_tag from v3 GTF provides authoritative correspondence between annotation versions
 2. **DESeq2 parameters**: Standard settings with size factor normalization reproduced published results
 3. **Sample handling**: Proper collection organization in Galaxy enabled accurate strain/condition comparisons
 
@@ -213,5 +213,5 @@ Our Galaxy-based DESeq2 analysis successfully replicates the findings of Wang et
 
 ---
 
-*Report generated: 2025-11-29*
+*Report generated: 2024-12-12*
 *Analysis performed on [UseGalaxy.org](https://usegalaxy.org)*

@@ -1,0 +1,41 @@
+v2_gene,v3_gene,pub_lfc,our_lfc,v2_product,v3_product,study,comparison
+B9J08_001458,B9J08_03708,-6.68,-6.82,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_003002,B9J08_00860,-6.47,-8.03,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_004787,B9J08_04747,-5.1,-6.98,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_002141,B9J08_03214,-5.0,-5.16,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_004243,B9J08_04997,4.95,5.37,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_003306,B9J08_01167,-4.72,-5.07,glyceraldehyde-3-phosphate dehydrogenase,glyceraldehyde-3-phosphate dehydrogenase,Santana,tnSWI1
+B9J08_002451,B9J08_05461,-4.3,-5.31,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_004544,B9J08_04503,-4.07,-4.72,OPT family small oligopeptide transporter,OPT family small oligopeptide transporter,Santana,tnSWI1
+B9J08_001015,B9J08_02973,3.95,4.79,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_002660,B9J08_00520,3.92,5.3,hypothetical protein,hypothetical protein,Santana,tnSWI1
+B9J08_001458,B9J08_03708,-7.25,-7.35,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_002136,B9J08_03209,6.58,12.0,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_001899,B9J08_00369,-5.27,-5.4,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_000656,B9J08_02614,4.05,4.25,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_004446,B9J08_05200,-3.49,-3.65,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_003109,B9J08_00967,-3.14,-4.67,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_002593,B9J08_00453,-2.82,-3.29,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_002582,B9J08_05592,2.58,3.07,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_004787,B9J08_04747,-2.56,-2.66,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_003223,B9J08_01084,-2.51,-2.54,hypothetical protein,hypothetical protein,Santana,AR0387
+B9J08_002136,B9J08_03209,-10.0,-14.98,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_001458,B9J08_03708,8.61,8.67,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_004451,B9J08_05205,6.81,6.74,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_001549,B9J08_00020,-6.12,-6.09,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_000592,B9J08_02550,5.99,6.02,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_002480,B9J08_05490,-5.27,-5.26,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_001515,B9J08_03765,5.16,5.17,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_004112,B9J08_04866,5.07,5.08,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_004100,B9J08_01957,4.97,4.95,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_005072,B9J08_03955,4.73,4.76,hypothetical protein,hypothetical protein,Wang,in_vitro
+B9J08_002136,B9J08_03209,-8.76,-8.68,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_003891,B9J08_01749,4.95,4.91,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_001458,B9J08_03708,4.47,4.53,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_004100,B9J08_01957,3.68,3.66,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_001546,B9J08_00017,-3.23,-3.25,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_001549,B9J08_00020,-3.15,-3.15,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_004109,B9J08_04863,3.14,3.13,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_004544,B9J08_04503,2.98,2.97,OPT family small oligopeptide transporter,OPT family small oligopeptide transporter,Wang,in_vivo
+B9J08_001548,B9J08_00019,-2.89,-2.89,hypothetical protein,hypothetical protein,Wang,in_vivo
+B9J08_000846,B9J08_02804,2.87,2.87,hypothetical protein,hypothetical protein,Wang,in_vivo

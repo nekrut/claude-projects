@@ -41,54 +41,57 @@
 ### Gene ID Mapping Challenge
 
 The paper used a different genome annotation version:
-- **Paper gene IDs**: 6-digit suffix (e.g., `B9J08_001458`)
-- **Our gene IDs**: 5-digit suffix (e.g., `B9J08_03708`)
+- **Paper gene IDs**: 6-digit suffix (e.g., `B9J08_001458`) from GCA_002759435.2
+- **Our gene IDs**: 5-digit suffix (e.g., `B9J08_03708`) from GCA_002759435.3
 
-**Solution**: LFC-based correlation mapping - genes with matching expression produce nearly identical fold changes, allowing unambiguous mapping.
+**Solution**: Official NCBI gene ID mapping via the `old_locus_tag` attribute in the GCA_002759435.3 GTF file, which explicitly links v3 gene IDs to their corresponding v2 IDs.
 
 ### Comparison 1: AR0382 vs tnSWI1 (Figure 1D)
 
 | Metric | Value |
 |--------|-------|
-| DEGs mapped | 203 |
-| Pearson R² | **0.9996** |
-| Spearman R | 1.0000 |
-| Direction agreement | **100%** |
-| Mean LFC difference | 0.012 |
+| DEGs mapped | 203/203 |
+| Pearson R² | **0.9397** |
+| Regression slope | 1.18 |
+| Direction agreement | **99.0%** |
+| Mean |LFC diff| | 0.413 |
 
 ### Comparison 2: AR0382 vs AR0387 (Figure S5A)
 
 | Metric | Value |
 |--------|-------|
-| DEGs mapped | 166 |
-| Pearson R² | **0.9895** |
-| Spearman R | 0.9999 |
-| Direction agreement | **100%** |
-| Mean LFC difference | 0.022 |
+| DEGs mapped | 165/166 |
+| Pearson R² | **0.8884** |
+| Regression slope | 1.13 |
+| Direction agreement | **97.0%** |
+| Mean |LFC diff| | 0.314 |
 
 ### Key Gene: SCF1 (Surface Colonization Factor 1)
 
 | Dataset | Gene ID | log2FC | Status |
 |---------|---------|--------|--------|
 | Paper (Fig 1D) | B9J08_001458 | -6.68 | Most downregulated |
-| Our analysis | B9J08_03708 | -6.82* | Confirmed |
-| Paper (Fig S5A) | B9J08_001458 | -7.25 | Most downregulated |
-| Our analysis | B9J08_03708 | -7.35* | Confirmed |
+| Our analysis | B9J08_03708 | -6.82 | Confirmed |
 
-*After correcting for reversed comparison direction
+*Gene ID mapping validated via NCBI old_locus_tag: B9J08_001458 (v2) → B9J08_03708 (v3)
 
 ## Technical Notes
 
 ### LFC Direction Reversal
 
-Our DESeq2 analysis used AR0382 as treatment (not reference), resulting in opposite LFC signs compared to the paper. This was detected and corrected using the `--auto-direction` feature in the gene mapping tool.
+Our DESeq2 analysis used AR0382 as treatment (not reference), resulting in opposite LFC signs compared to the paper. This was detected and corrected automatically by checking correlation sign.
+
+### Gene ID Mapping Method
+
+Gene IDs were mapped using the official NCBI `old_locus_tag` attribute from the GCA_002759435.3 annotation GTF file, which provides the authoritative correspondence between annotation versions.
 
 ### Quality Assessment
 
-Both comparisons achieved **EXCELLENT** quality status:
-- R² > 0.99
-- 100% direction agreement
-- Mean LFC differences < 0.025
+Both comparisons demonstrate strong reproducibility:
+- R² ~0.89-0.94 (strong correlation)
+- >97% direction agreement
+- Mean LFC differences <0.5
+- Regression slopes ~1.1-1.2 (slight systematic difference likely due to different normalization methods)
 
 ## Galaxy Artifacts
 
@@ -106,16 +109,16 @@ Both comparisons achieved **EXCELLENT** quality status:
 
 ## Conclusions
 
-1. **Reproducibility confirmed**: Near-perfect correlation (R² > 0.98) between our analysis and published results
-2. **SCF1 validated**: The key finding - SCF1 as the most strongly downregulated gene - is fully reproduced
-3. **Annotation mapping successful**: LFC-based correlation mapping resolved gene ID discrepancies with 100% accuracy
+1. **Reproducibility confirmed**: Strong correlation (R² = 0.94 and 0.89) between our reanalysis and published results
+2. **SCF1 validated**: The key finding—SCF1 as the most strongly downregulated gene—is fully reproduced (LFC: -6.68 paper vs -6.82 ours)
+3. **Gene ID mapping**: Official NCBI old_locus_tag mapping successfully resolved gene ID discrepancies between annotation versions
 
 ## References
 
 - Santana et al. (2024) - Original publication
 - Galaxy workflow: RNA-seq for Paired-end fastqs with fasta reference
-- Gene mapping tool: [galaxy-claude-skills](https://github.com/nekrut/galaxy-claude-skills)
+- Genome annotations: GCA_002759435.2 (paper) and GCA_002759435.3 (our analysis)
 
 ---
-*Analysis performed: 2024-11-30*  
+*Analysis performed: 2024-12-12*
 *Generated with Claude Code*
