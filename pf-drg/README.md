@@ -1,98 +1,71 @@
-# P. falciparum Drug Resistance Genes
+# *P. falciparum* Drug Resistance Genes
 
-Analysis of *Plasmodium falciparum* drug resistance genes: CDS sequences, known mutations, and coordinate verification.
+CDS sequences and validated resistance mutations for 9 *Plasmodium falciparum* drug resistance genes from the 3D7 reference genome.
 
-## Target Genes
+## Genes
 
-| Gene | PlasmoDB ID | Description | Drug Association |
-|------|-------------|-------------|------------------|
-| Pfk13 | PF3D7_1343700 | kelch protein K13 | Artemisinin |
-| pfmdr1 | PF3D7_0523000 | multidrug resistance protein 1 | CQ, MQ, LMF |
-| Pfcrt | PF3D7_0709000 | chloroquine resistance transporter | Chloroquine |
-| Pfdhfr | PF3D7_0417200 | dihydrofolate reductase-thymidylate synthase | Pyrimethamine |
-| Pfdhps | PF3D7_0810800 | dihydropteroate synthase | Sulfadoxine |
-| Pfubp1 | PF3D7_0104300 | ubiquitin carboxyl-terminal hydrolase 1 | Artemisinin |
-| PfATP6 | PF3D7_0106300 | calcium-transporting ATPase (SERCA) | Artemisinin |
-| MRP1 | PF3D7_0112200 | multidrug resistance-associated protein 1 | Multiple |
-| MRP2 | PF3D7_1229100 | multidrug resistance-associated protein 2 | Multiple |
-
-## Workflow
-
-### Step 1: Fetch CDS Sequences from NCBI
-
-`fetch_pf_cds.py` retrieves coding sequences for all 9 genes from NCBI using E-utilities API.
-
-**Method:**
-1. Search NCBI Gene database using PlasmoDB ID
-2. Link to protein records (RefSeq XP_ accessions)
-3. Fetch CDS nucleotide sequence via `fasta_cds_na` return type
-4. Output multi-FASTA with standardized headers
-
-```bash
-python3 fetch_pf_cds.py
-```
-
-**Output:** `pf_drug_resistance_cds.fasta`
-
-Header format: `>GeneName|PlasmoDB_ID|Protein_Accession`
-
-### Step 2: Compile Drug Resistance Mutations
-
-`pf_drug_resistance_mutations.tsv` contains 45 known resistance mutations compiled from literature.
-
-**Columns:**
-- `Gene` - Gene name
-- `PlasmoDB_ID` - PlasmoDB identifier
-- `Mutation` - Amino acid change (e.g., K76T)
-- `Position` - Codon position (1-indexed)
-- `Drug_Resistance` - Associated drug(s)
-- `PubMed_IDs` - Supporting references
-
-**Key references:**
-- K13 artemisinin mutations: [PMID:29378723](https://pubmed.ncbi.nlm.nih.gov/29378723/)
-- Pfcrt K76T chloroquine: [PMID:15944738](https://pubmed.ncbi.nlm.nih.gov/15944738/)
-- pfmdr1 N86Y/Y184F: [PMID:27189525](https://pubmed.ncbi.nlm.nih.gov/27189525/)
-- Pfdhfr/Pfdhps antifolates: [PMID:22314533](https://pubmed.ncbi.nlm.nih.gov/22314533/)
-- Pfubp1 artemisinin: [PMID:31636063](https://pubmed.ncbi.nlm.nih.gov/31636063/)
-- MRP proteins: [PMID:34790129](https://pubmed.ncbi.nlm.nih.gov/34790129/)
-
-### Step 3: Verify Mutation Coordinates
-
-`verify_mutations.py` validates that mutation positions match actual amino acids in 3D7 reference sequences.
-
-**Method:**
-1. Translate CDS sequences to protein (standard genetic code)
-2. For each mutation (e.g., K76T), check that position 76 contains K
-3. Report PASS/FAIL for each mutation
-
-```bash
-python3 verify_mutations.py
-```
-
-**Output:** `mutation_verification_report.tsv`
-
-**Results:** 43 PASS, 1 FAIL, 1 SKIP
+| Gene | PlasmoDB ID | NCBI Gene ID | Function | Drug |
+|------|-------------|--------------|----------|------|
+| Pfk13 | PF3D7_1343700 | 814205 | kelch protein K13 | Artemisinin |
+| pfmdr1 | PF3D7_0523000 | 813045 | multidrug resistance protein 1 | CQ, MQ, LMF |
+| Pfcrt | PF3D7_0709000 | 2655199 | chloroquine resistance transporter | Chloroquine |
+| Pfdhfr | PF3D7_0417200 | 9221804 | dihydrofolate reductase | Pyrimethamine |
+| Pfdhps | PF3D7_0810800 | 2655294 | dihydropteroate synthase | Sulfadoxine |
+| Pfubp1 | PF3D7_0104300 | 813181 | ubiquitin hydrolase 1 | Artemisinin |
+| PfATP6 | PF3D7_0106300 | 813199 | SERCA-type ATPase | Artemisinin |
+| MRP1 | PF3D7_0112200 | 813255 | MRP transporter 1 | Multiple |
+| MRP2 | PF3D7_1229100 | 811334 | MRP transporter 2 | Multiple |
 
 ## Files
 
 | File | Description |
 |------|-------------|
-| `fetch_pf_cds.py` | Script to fetch CDS from NCBI |
-| `pf_drug_resistance_cds.fasta` | CDS sequences (9 genes, 3D7 strain) |
-| `pf_drug_resistance_mutations.tsv` | Drug resistance mutations (45 entries) |
-| `verify_mutations.py` | Mutation coordinate verification script |
-| `mutation_verification_report.tsv` | Verification results |
+| `pf_drug_resistance_cds.fasta` | CDS sequences (9 genes) |
+| `pf_drug_resistance_mutations.tsv` | 45 resistance mutations with coordinates and PubMed refs |
+| `mutation_verification_report.tsv` | Coordinate validation results |
+| `fetch_pf_cds.py` | Fetch CDS via NCBI datasets CLI |
+| `verify_mutations.py` | Validate mutation coordinates against translated CDS |
+
+## Usage
+
+```bash
+# Fetch CDS sequences
+python3 fetch_pf_cds.py
+
+# Verify mutation coordinates
+python3 verify_mutations.py
+```
+
+## Mutations Table Format
+
+`pf_drug_resistance_mutations.tsv` columns:
+- **Gene** — gene name
+- **PlasmoDB_ID** — PlasmoDB identifier
+- **Mutation** — amino acid change (e.g., K76T)
+- **Position** — codon position (1-indexed)
+- **Drug_Resistance** — associated drug(s)
+- **PubMed_IDs** — literature references
+
+## Coordinate Verification
+
+`verify_mutations.py` translates CDS to protein and checks that wild-type residues match mutation notation. For K76T, position 76 should contain K.
+
+**Results:** 43 PASS, 1 FAIL, 1 SKIP
+
+The single FAIL (Pfdhps A437G) is expected—3D7 carries the resistant G437 allele because it was isolated from a region with historical sulfadoxine use.
 
 ## Dependencies
 
-Python 3.6+ (standard library only—no external packages required)
+- Python 3.6+
+- NCBI datasets CLI: `conda install -c conda-forge ncbi-datasets-cli`
 
-## Notes
+## References
 
-### 3D7 Reference Strain Caveat
-
-The Pfdhps A437G mutation shows FAIL in verification because 3D7 already carries the resistant G437 allele. The 3D7 strain was isolated from a patient with likely African origin where sulfadoxine resistance was prevalent. This is expected behavior, not an error in coordinates.
-
-### Sequence Source
-
-All sequences are from *P. falciparum* 3D7 reference genome via NCBI RefSeq.
+| Topic | PMID |
+|-------|------|
+| K13 artemisinin mutations | [29378723](https://pubmed.ncbi.nlm.nih.gov/29378723/) |
+| Pfcrt K76T | [15944738](https://pubmed.ncbi.nlm.nih.gov/15944738/) |
+| pfmdr1 N86Y/Y184F | [27189525](https://pubmed.ncbi.nlm.nih.gov/27189525/) |
+| Pfdhfr/Pfdhps antifolates | [22314533](https://pubmed.ncbi.nlm.nih.gov/22314533/) |
+| Pfubp1 artemisinin | [31636063](https://pubmed.ncbi.nlm.nih.gov/31636063/) |
+| MRP proteins | [34790129](https://pubmed.ncbi.nlm.nih.gov/34790129/) |

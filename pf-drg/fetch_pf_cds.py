@@ -1,112 +1,101 @@
 #!/usr/bin/env python3
-"""Fetch P. falciparum drug resistance gene CDS sequences from NCBI."""
+"""Fetch P. falciparum drug resistance gene CDS sequences using NCBI datasets CLI."""
 
-import urllib.request
-import urllib.parse
-import xml.etree.ElementTree as ET
-import time
+import subprocess
+import tempfile
+import zipfile
+import os
 import re
 
+# Gene name, PlasmoDB ID, NCBI Gene ID
 GENES = [
-    ("Pfk13", "PF3D7_1343700"),
-    ("pfmdr1", "PF3D7_0523000"),
-    ("Pfcrt", "PF3D7_0709000"),
-    ("Pfdhfr", "PF3D7_0417200"),
-    ("Pfdhps", "PF3D7_0810800"),
-    ("Pfubp1", "PF3D7_0104300"),
-    ("PfATP6", "PF3D7_0106300"),
-    ("MRP1", "PF3D7_0112200"),
-    ("MRP2", "PF3D7_1229100"),
+    ("Pfk13", "PF3D7_1343700", 814205),
+    ("pfmdr1", "PF3D7_0523000", 813045),
+    ("Pfcrt", "PF3D7_0709000", 2655199),
+    ("Pfdhfr", "PF3D7_0417200", 9221804),
+    ("Pfdhps", "PF3D7_0810800", 2655294),
+    ("Pfubp1", "PF3D7_0104300", 813181),
+    ("PfATP6", "PF3D7_0106300", 813199),
+    ("MRP1", "PF3D7_0112200", 813255),
+    ("MRP2", "PF3D7_1229100", 811334),
 ]
 
-BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-EMAIL = "user@example.com"
 
+def fetch_cds_with_datasets(gene_name, plasmodb_id, gene_id):
+    """Fetch CDS sequence using NCBI datasets CLI."""
+    print(f"Fetching {gene_name} ({plasmodb_id}, GeneID:{gene_id})...")
 
-def esearch(db, term):
-    """Search NCBI database and return list of IDs."""
-    params = urllib.parse.urlencode({
-        "db": db,
-        "term": term,
-        "retmode": "xml",
-        "email": EMAIL
-    })
-    url = f"{BASE_URL}/esearch.fcgi?{params}"
-    with urllib.request.urlopen(url) as resp:
-        root = ET.parse(resp).getroot()
-    return [id_elem.text for id_elem in root.findall(".//Id")]
+    with tempfile.TemporaryDirectory() as tmpdir:
+        zippath = os.path.join(tmpdir, "gene.zip")
 
+        # Download gene data with CDS
+        cmd = [
+            "datasets", "download", "gene", "gene-id", str(gene_id),
+            "--include", "cds",
+            "--filename", zippath
+        ]
 
-def elink(dbfrom, dbto, ids):
-    """Link records between NCBI databases."""
-    params = urllib.parse.urlencode({
-        "dbfrom": dbfrom,
-        "db": dbto,
-        "id": ",".join(ids) if isinstance(ids, list) else ids,
-        "retmode": "xml",
-        "email": EMAIL
-    })
-    url = f"{BASE_URL}/elink.fcgi?{params}"
-    with urllib.request.urlopen(url) as resp:
-        root = ET.parse(resp).getroot()
-    return [id_elem.text for id_elem in root.findall(".//Link/Id")]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"  WARNING: datasets download failed for {plasmodb_id}")
+            print(f"  stderr: {result.stderr}")
+            return None
 
+        # Extract CDS from zip
+        try:
+            with zipfile.ZipFile(zippath, 'r') as zf:
+                cds_path = "ncbi_dataset/data/cds.fna"
+                if cds_path not in zf.namelist():
+                    print(f"  WARNING: No CDS file in download for {plasmodb_id}")
+                    return None
 
-def get_cds_for_gene(gene_name, plasmodb_id):
-    """Fetch CDS sequence for a gene using its PlasmoDB ID."""
-    print(f"Fetching {gene_name} ({plasmodb_id})...")
+                cds_content = zf.read(cds_path).decode('utf-8')
+        except Exception as e:
+            print(f"  WARNING: Failed to extract CDS for {plasmodb_id}: {e}")
+            return None
 
-    # Search Gene database for this gene
-    gene_ids = esearch("gene", f"{plasmodb_id}[Gene Name] AND Plasmodium falciparum[Organism]")
+    # Parse and reformat FASTA
+    sequences = []
+    current_header = None
+    current_seq = []
 
-    if not gene_ids:
-        print(f"  WARNING: No gene found for {plasmodb_id}")
+    for line in cds_content.strip().split('\n'):
+        if line.startswith('>'):
+            if current_header and current_seq:
+                sequences.append((current_header, ''.join(current_seq)))
+            current_header = line
+            current_seq = []
+        else:
+            current_seq.append(line)
+
+    if current_header and current_seq:
+        sequences.append((current_header, ''.join(current_seq)))
+
+    if not sequences:
+        print(f"  WARNING: No sequences found for {plasmodb_id}")
         return None
 
-    time.sleep(0.34)
+    # Use first sequence, reformat header
+    header, seq = sequences[0]
 
-    # Get linked protein records (RefSeq: XP_)
-    prot_ids = elink("gene", "protein", gene_ids[:1])
+    # Extract accession from original header
+    match = re.search(r'>(\S+)', header)
+    accession = match.group(1) if match else "unknown"
 
-    if not prot_ids:
-        print(f"  WARNING: No protein records linked for {plasmodb_id}")
-        return None
+    new_header = f">{gene_name}|{plasmodb_id}|{accession}"
 
-    time.sleep(0.34)
+    # Wrap sequence to 70 chars per line
+    wrapped_seq = '\n'.join(seq[i:i+70] for i in range(0, len(seq), 70))
 
-    # Filter to get RefSeq protein (XP_) - first one is usually the primary
-    # Fetch CDS nucleotide sequence from protein record
-    params = urllib.parse.urlencode({
-        "db": "protein",
-        "id": prot_ids[0],
-        "rettype": "fasta_cds_na",
-        "retmode": "text",
-        "email": EMAIL
-    })
-    url = f"{BASE_URL}/efetch.fcgi?{params}"
-    with urllib.request.urlopen(url) as resp:
-        fasta = resp.read().decode("utf-8")
-
-    if fasta.strip() and not fasta.startswith("Error") and fasta.startswith(">"):
-        lines = fasta.strip().split("\n")
-        # Extract accession from original header
-        match = re.search(r"protein_id=(\S+)\]", lines[0])
-        prot_acc = match.group(1) if match else prot_ids[0]
-        new_header = f">{gene_name}|{plasmodb_id}|{prot_acc}"
-        lines[0] = new_header
-        return "\n".join(lines)
-
-    print(f"  WARNING: Could not retrieve CDS for {plasmodb_id}")
-    return None
+    return f"{new_header}\n{wrapped_seq}"
 
 
 def main():
     output_file = "pf_drug_resistance_cds.fasta"
     sequences = []
 
-    for gene_name, plasmodb_id in GENES:
-        time.sleep(0.34)
-        seq = get_cds_for_gene(gene_name, plasmodb_id)
+    for gene_name, plasmodb_id, gene_id in GENES:
+        seq = fetch_cds_with_datasets(gene_name, plasmodb_id, gene_id)
         if seq:
             sequences.append(seq)
             print(f"  Success: {gene_name}")
